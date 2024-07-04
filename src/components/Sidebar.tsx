@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Box, Avatar, Button } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
@@ -22,10 +22,13 @@ const Sidebar: React.FC = () => {
   ];
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Thêm logic đăng xuất tại đây
+    // Logic đăng xuất (ví dụ: xóa token, xóa session, v.v.)
     console.log('Logout clicked');
+    // Chuyển hướng đến trang đăng nhập
+    navigate('/signin');
   };
 
   return (

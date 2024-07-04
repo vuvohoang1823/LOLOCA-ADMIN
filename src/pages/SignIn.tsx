@@ -1,28 +1,63 @@
-import React from 'react';
+import { Avatar, Box, Button, Container, CssBaseline, TextField, Typography } from "@mui/material";
 
-const SignIn: React.FC = () => {
-  const handleSignIn = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Thực hiện đăng nhập (tạm thời cho phép truy cập)
+export default function SignIn() {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
     window.location.href = "/dashboard";
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={handleSignIn} className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl mb-6">Sign In</h2>
-        <div className="mb-4">
-          <label className="block mb-2">Email</label>
-          <input type="email" className="w-full p-2 border border-gray-300 rounded" required />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Password</label>
-          <input type="password" className="w-full p-2 border border-gray-300 rounded" required />
-        </div>
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Sign In</button>
-      </form>
-    </div>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: '200px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar src="https://www.jaivikkheti.in/javikadminnew/images/loginimg.png" sx={{ m: 3, bgcolor: '#004AAD', width: '100px', height: '100px' }}>
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
-};
-
-export default SignIn;
+}  

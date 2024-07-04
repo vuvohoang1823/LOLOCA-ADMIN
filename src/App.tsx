@@ -8,6 +8,7 @@ const App: React.FC = () => {
       <Sidebar />
       <div className="flex-1 p-10 ml-240">
         <Outlet />
+
       </div>
     </div>
   );
