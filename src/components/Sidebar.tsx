@@ -7,6 +7,7 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 import TourIcon from '@mui/icons-material/Tour';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { SvgIconProps } from '@mui/material/SvgIcon';
+import logo from '../assets/logo.png';
 
 const iconStyles: SvgIconProps = {
   sx: { color: '#FFDE59' }
@@ -35,10 +36,10 @@ const Sidebar: React.FC = () => {
     <Drawer
       variant="permanent"
       anchor="left"
-      sx={{ width: 240, flexShrink: 0, '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}
+      sx={{ width: 240, flexShrink: 0, '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box', backgroundColor: '#000000', color: '#FFFFFF' } }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 2, mb: '40px' }}>
-        <img src="/public/favicon-32x32.png" alt="LOLOCA Logo" style={{ width: 100, height: 100 }} />
+        <img src={logo} alt="LOLOCA Logo" style={{ width: 100, height: 100 }} />
         <Avatar alt="Profile Picture" src="" sx={{ width: 56, height: 56, mt: 5 }} />
       </Box>
       <List>
@@ -54,7 +55,7 @@ const Sidebar: React.FC = () => {
               }}
               selected={location.pathname === item.path}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: '#FFDE59' }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>

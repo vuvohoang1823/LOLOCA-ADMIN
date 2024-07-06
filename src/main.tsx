@@ -9,6 +9,7 @@ import City from './pages/City';
 import Tour from './pages/Tour';
 import Payment from './pages/Payment';
 import SignIn from './pages/SignIn';
+import NotFound from './pages/NotFound';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="tour" element={<Tour />} />
           <Route path="payment" element={<Payment />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

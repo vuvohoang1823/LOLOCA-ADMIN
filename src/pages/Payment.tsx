@@ -1,11 +1,12 @@
 import React from 'react';
+import PageLayout from '../components/PageLayout';
 
 const Payment: React.FC = () => {
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Payment</h1>
+    <PageLayout title="Payment Management">
+      {/* Nội dung của Payment */}
       <p>Manage payments here.</p>
-    </div>
+    </PageLayout>
   );
 };
 
