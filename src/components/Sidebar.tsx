@@ -25,12 +25,10 @@ const Sidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // Logic đăng xuất (ví dụ: xóa token, xóa session, v.v.)
-    console.log('Logout clicked');
-    // Chuyển hướng đến trang đăng nhập
-    navigate('/signin');
-  };
+  const handleLogout = React.useCallback(async () => {
+    localStorage.clear();
+    window.location.href = "/signin";
+  }, []);
 
   return (
     <Drawer

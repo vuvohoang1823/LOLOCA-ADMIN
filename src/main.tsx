@@ -9,6 +9,7 @@ import City from './pages/City';
 import Tour from './pages/Tour';
 import Payment from './pages/Payment';
 import SignIn from './pages/SignIn';
+import OtpVerification from './pages/OtpVerification';
 import NotFound from './pages/NotFound';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -16,8 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/otp" element={<OtpVerification />} />
         <Route path="/" element={<Navigate to="/signin" replace />} />
-        <Route path="/" element={<App />}>
+        <Route element={<App />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="user-management" element={<UserManagement />} />
           <Route path="city" element={<City />} />

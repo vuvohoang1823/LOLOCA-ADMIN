@@ -40,8 +40,16 @@ const AddCityModal: React.FC<AddCityModalProps> = ({ open, onClose }) => {
     onClose();
   };
 
+  const handleCancel = () => {
+    setCityName('');
+    setDescription('');
+    setImage(null);
+    setImagePreview(null);
+    onClose();
+  };
+
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={(_, reason) => reason === 'backdropClick' ? null : onClose()}>
       <Box sx={{ width: 400, margin: '100px auto', backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
         <Typography variant="h6" gutterBottom>
           Thêm thành phố mới
@@ -73,7 +81,14 @@ const AddCityModal: React.FC<AddCityModalProps> = ({ open, onClose }) => {
             </Box>
           )}
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 2 }}>
+          <Button
+            variant="contained"
+            onClick={handleCancel}
+            sx={{ backgroundColor: '#b0b0b0', '&:hover': { backgroundColor: '#a0a0a0' } }}
+          >
+            Cancel
+          </Button>
           <Button variant="contained" onClick={handleConfirm}>
             Confirm
           </Button>
