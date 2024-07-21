@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Paper, Typography, Box } from '@mui/material';
 import { Line, Bar } from 'react-chartjs-2';
 import PageLayout from '../components/PageLayout';
@@ -7,10 +8,19 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import TourIcon from '@mui/icons-material/Tour';
 import PaymentIcon from '@mui/icons-material/Payment';
+import { getTotalCities } from '../slices/citySlice';
+import { RootState, AppDispatch } from '../store/store';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
 
 const Dashboard: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const totalCities = useSelector((state: RootState) => state.city.totalCities);
+
+  useEffect(() => {
+    dispatch(getTotalCities());
+  }, [dispatch]);
+
   const userChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [
@@ -49,7 +59,7 @@ const Dashboard: React.FC = () => {
           <Paper sx={{ p: 2, mb: 3, backgroundColor: '#28A745', color: 'white' }}>
             <LocationCityIcon sx={{ fontSize: 40 }} />
             <Typography variant="h6">Total Cities</Typography>
-            <Typography variant="h4">200</Typography>
+            <Typography variant="h4">{totalCities}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} md={3}>

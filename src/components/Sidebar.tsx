@@ -8,6 +8,9 @@ import TourIcon from '@mui/icons-material/Tour';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { SvgIconProps } from '@mui/material/SvgIcon';
 import logo from '../assets/logo.png';
+import { useDispatch } from 'react-redux';
+import { logout } from '../slices/authSlice';
+import type { AppDispatch } from '../store/store';
 
 const iconStyles: SvgIconProps = {
   sx: { color: '#FFDE59' }
@@ -24,10 +27,11 @@ const Sidebar: React.FC = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleLogout = () => {
-    // Logic đăng xuất (ví dụ: xóa token, xóa session, v.v.)
-    console.log('Logout clicked');
+    // Logic đăng xuất: xóa token, xóa session, v.v.
+    dispatch(logout());
     // Chuyển hướng đến trang đăng nhập
     navigate('/signin');
   };

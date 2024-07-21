@@ -40,8 +40,12 @@ const AddCityModal: React.FC<AddCityModalProps> = ({ open, onClose }) => {
     onClose();
   };
 
+  const handleCancel = () => {
+    onClose();
+  };
+
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose} BackdropProps={{ onClick: (e) => e.stopPropagation() }}>
       <Box sx={{ width: 400, margin: '100px auto', backgroundColor: 'white', padding: 3, borderRadius: 2 }}>
         <Typography variant="h6" gutterBottom>
           Thêm thành phố mới
@@ -74,6 +78,9 @@ const AddCityModal: React.FC<AddCityModalProps> = ({ open, onClose }) => {
           )}
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
+          <Button variant="contained" sx={{ backgroundColor: '#b0b0b0', '&:hover': { backgroundColor: '#a0a0a0' }, mr: 2 }} onClick={handleCancel}>
+            Cancel
+          </Button>
           <Button variant="contained" onClick={handleConfirm}>
             Confirm
           </Button>
